@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template
 
-aloy = Flask(__name__)
+app = Flask(__name__)
 
-@aloy.route("/", methods=["GET", "POST"])
-def optimisation_performance():
+@app.route('/', methods=["GET", "POST"])
+def index():
+
     if request.method == "POST":
         lcp = float(request.form["lcp"])
         ttfb = float(request.form["ttfb"])
@@ -13,69 +14,9 @@ def optimisation_performance():
         recommandations = evaluer_conditions(lcp, ttfb, lcp_start_loading_time, resource_load_time)
         recommandations_html = "<br><br>".join(recommandations)
 
-        return render_template_string("""
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>ALOY: the Automatic LCP Optimizations Yielder tool</title>
-                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aloy.css') }}">
-            </head>
-            <body>
-                <h1>ALOY: the Automatic LCP Optimizations Yielder tool</h1>
-                <form method="post">
-                    <label for="lcp">LCP (ms): </label>
-                    <input type="text" id="lcp" name="lcp" value="{{ lcp }}"><br>
+        return render_template("index.html", lcp=lcp, ttfb=ttfb, lcp_start_loading_time=lcp_start_loading_time, resource_load_time=resource_load_time, recommandations_html=recommandations_html)
 
-                    <label for="ttfb">TTFB (ms): </label>
-                    <input type="text" id="ttfb" name="ttfb" value="{{ ttfb }}"><br>
-
-                    <label for="lcp_start_loading_time">LCP start loading timing (ms): </label>
-                    <input type="text" id="lcp_start_loading_time" name="lcp_start_loading_time" value="{{ lcp_start_loading_time }}"><br>
-
-                    <label for="resource_load_time">Resource Load Time (ms): </label>
-                    <input type="text" id="resource_load_time" name="resource_load_time" value="{{ resource_load_time }}"><br>
-
-                    <input type="submit" value="Evaluer">
-                </form>
-
-                <pre>
-                    <p id="Recommandations">{{ recommandations_html | safe }}</p>
-                </pre>
-            </body>
-            </html>
-        """, lcp=lcp, ttfb=ttfb, lcp_start_loading_time=lcp_start_loading_time, resource_load_time=resource_load_time, recommandations_html=recommandations_html)
-
-    return render_template_string("""
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>ALOY: the Automatic LCP Optimizations Yielder tool</title>
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aloy.css') }}">
-        </head>
-        <body>
-            <h1>ALOY: the Automatic LCP Optimizations Yielder tool</h1>
-            <form method="post">
-                <label for="lcp">LCP (ms): </label>
-                <input type="text" id="lcp" name="lcp"><br>
-
-                <label for="ttfb">TTFB (ms): </label>
-                <input type="text" id="ttfb" name="ttfb"><br>
-
-                <label for="lcp_start_loading_time">LCP start loading timing (ms): </label>
-                <input type="text" id="lcp_start_loading_time" name="lcp_start_loading_time"><br>
-
-                <label for="resource_load_time">Resource Load Time (ms): </label>
-                <input type="text" id="resource_load_time" name="resource_load_time"><br>
-
-                <input type="submit" value="Evaluer">
-            </form>
-
-            <pre>
-                <p id="recommandations"></p>
-            </pre>
-        </body>
-        </html>
-    """)
+    return render_template('index.html')
 
 def evaluer_conditions(lcp, ttfb, lcp_start_loading_time, resource_load_time):
     recommandations = []
@@ -117,7 +58,7 @@ def evaluer_conditions(lcp, ttfb, lcp_start_loading_time, resource_load_time):
 
     return recommandations
 
-if __name__ == "__main__":
-    aloy.run(debug=True)
 
+if __name__ == "__main__":
+  app.run(debug=True)
 
