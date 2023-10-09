@@ -1,0 +1,80 @@
+/* aloy.css */
+body {
+    font-family: "Poppins", sans-serif; /* Police de caractères Poppins */
+    background-color: #f0f0f0; /* Nouvelle couleur de fond similaire à contentsquare.com */
+    color: #333; /* Couleur du texte principal */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: rgb(31, 23, 113); /* Nouvelle couleur du titre */
+}
+
+.form-section {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff; /* Couleur de fond du formulaire */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-section label {
+    font-weight: bold;
+}
+
+.form-section input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Coins arrondis */
+    font-family: "Poppins", sans-serif; /* Utilisation de la police Poppins */
+    font-size: 12px; /* Nouvelle taille du texte similaire à contentsquare.com */
+}
+
+.form-section input[type="submit"] {
+    background-color: rgb(250, 222, 102); /* Nouvelle couleur de fond du bouton */
+    color: rgb(31, 23, 113); /* Couleur du texte du bouton */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer;
+    font-size: 12px; /* Nouvelle taille du texte similaire à contentsquare.com */
+    font-weight: bold;
+}
+
+.form-section input[type="submit"]:hover {
+    background-color: #0056b3; /* Nouvelle couleur au survol du bouton */
+}
+
+.response-section .recommendations {
+    background-color: rgb(250, 222, 102); /* Nouvelle couleur de fond de la réponse */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Coins arrondis */
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif; /* Police de caractères Poppins */
+    font-size: 12px; /* Nouvelle taille du texte similaire à contentsquare.com */
+    color: rgb(31, 23, 113); /* Couleur du texte */
+}
+
+.response-section .recommendations p {
+    margin-bottom: 10px;
+}
+
+.response-section .recommendations .highlight {
+    color: #0077cb; /* Couleur du texte en surbrillance similaire à contentsquare.com */
+    font-weight: bold;
+}
+
+.response-section .recommendations ul {
+    list-style-type: disc; /* Style de la puce */
+    margin-left: 20px; /* Marge à gauche pour les listes à puces */
+}
+
+.response-section .recommendations ul ul {
+    list-style-type: circle; /* Style de la puce pour les listes imbriquées */
+}

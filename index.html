@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALOY: The Automatic LCP Optimizations Yielder Tool</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aloy.css') }}">
+</head>
+<body>
+    <!-- Logo ALOY -->
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo ALOY">
+
+    <h1>ALOY: The Automatic LCP Optimizations Yielder Tool</h1>
+    <form method="post">
+        <label for="lcp">LCP (ms):</label>
+        <input type="text" id="lcp" name="lcp" value="{{ lcp }}"><br>
+
+        <label for="ttfb">TTFB (ms):</label>
+        <input type="text" id="ttfb" name="ttfb" value="{{ ttfb }}"><br>
+
+        <label for="lcp_start_loading_time">LCP start loading timing (ms):</label>
+        <input type="text" id="lcp_start_loading_time" name="lcp_start_loading_time" value="{{ lcp_start_loading_time }}"><br>
+
+        <label for="resource_load_time">Resource Load Time (ms):</label>
+        <input type="text" id="resource_load_time" name="resource_load_time" value="{{ resource_load_time }}"><br>
+
+        <input type="submit" value="Evaluate">
+    </form>
+</body>
+</html>
